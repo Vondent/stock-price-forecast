@@ -73,9 +73,11 @@ def load_ticker(ticker: str, start: str, end: str) -> pd.DataFrame:
     if raw.empty:
         return pd.DataFrame()
     df = raw.copy()
-    df.columns = df.columns.get_level_values(0)
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
     df.columns = [c.lower() for c in df.columns]
-    df = df.reset_index().rename(columns={"Date": "date"})
+    df = df.reset_index()
+    df = df.rename(columns={df.columns[0]: "date"})
     df["date"] = pd.to_datetime(df["date"])
     df = df.sort_values("date").reset_index(drop=True)
     df["daily_mean"]   = (df["open"] + df["close"] + df["high"] + df["low"]) / 4
