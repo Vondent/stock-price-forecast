@@ -4,6 +4,10 @@ Interactive time-series forecasting app for any stock ticker — live data, 365-
 
 **[Live Demo →](https://vondent-stock-price-forecast.streamlit.app)**
 
+## Architecture
+
+![Architecture](architecture.png)
+
 ## What It Does
 
 Pulls live price data via yfinance and runs a full forecasting pipeline: exploratory analysis, stationarity testing, model selection, and a 1-year forward forecast with confidence intervals. Supports any ticker symbol with hourly-refreshed data.
@@ -31,4 +35,6 @@ Pulls live price data via yfinance and runs a full forecasting pipeline: explora
 | Data | yfinance (live, hourly cache) |
 | Forecasting | Prophet, pmdarima |
 | Visualization | Plotly |
+| Orchestration | Apache Airflow |
+| Storage | SQLite |
 | Language | Python |
