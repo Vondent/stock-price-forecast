@@ -6,7 +6,7 @@ Interactive time-series forecasting app for any stock ticker — live data, 365-
 
 ## Architecture
 
-![Architecture](architecture.png)
+![Architecture](stack.png)
 
 ## What It Does
 
